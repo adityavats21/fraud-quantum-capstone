@@ -7,7 +7,7 @@ import pandas as pd
 import os
 import traceback
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "../artifacts/xgb_model.joblib")
 SCALER_PATH = os.path.join(BASE_DIR, "../data/processed/scaler.pkl")
 
