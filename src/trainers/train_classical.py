@@ -16,13 +16,25 @@ def plot_confusion_matrix(cm, model_type, out_dir):
     plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
     plt.title(f'{model_type.upper()} - Confusion Matrix')
     plt.colorbar()
-    plt.xlabel('Predicted')
-    plt.ylabel('Actual')
     tick_marks = np.arange(2)
     plt.xticks(tick_marks, ['Not Fraud', 'Fraud'])
     plt.yticks(tick_marks, ['Not Fraud', 'Fraud'])
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+
+    thresh = cm.max() / 2
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            plt.text(
+                j, i, f"{cm[i, j]}\n({cm[i, j]/cm.sum():.2%})",
+                ha="center", va="center",
+                color="white" if cm[i, j] > thresh else "black",
+                fontsize=9, fontweight="bold"
+            )
+
     plt.tight_layout()
     plt.show()
+
 
 
 
